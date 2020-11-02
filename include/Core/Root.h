@@ -14,13 +14,17 @@ namespace eGLE
 
     class Root {
     public:
+        Root();
+
         SceneManager *createSceneManager();
         SceneManager *sceneManager(std::string name);
         bool removeSceneManager(std::string name);
 
-    private:
-        std::map<std::string, SceneManager *> m_sceneManagers;
+        void queueEndRendering();
 
+    private:
+        bool m_isActive;
+        std::map<std::string, SceneManager *> m_sceneManagers;
     };
 }
 
