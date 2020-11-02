@@ -6,6 +6,10 @@
 
 namespace eGLE
 {
+    Root::Root() {
+        m_isActive = true;
+    }
+
     SceneManager *Root::createSceneManager() {
         return nullptr;
     }
@@ -28,5 +32,9 @@ namespace eGLE
         }
 
         return false;
+    }
+
+    void Root::queueEndRendering() {
+        m_isActive = false;
     }
 }
