@@ -5,21 +5,30 @@
 #ifndef EGLE_APPLICATIONCONTEXT_H
 #define EGLE_APPLICATIONCONTEXT_H
 
-namespace eGLEBites
+#include <string>
+
+namespace eGLE
 {
     class Root;
+}
+
+namespace eGLEBites
+{
+    class InputListener;
 
     class ApplicationContext {
     public:
-        void root();
-        Root *getRoot();
+        ApplicationContext();
+        explicit ApplicationContext(std::string appName);
+
+        eGLE::Root *getRoot();
 
     protected:
         void setup();
-        void addInputListener(ApplicationContext *context);
+        void addInputListener(InputListener *listener);
 
     private:
-
+        std::string m_appName;
     };
 }
 
