@@ -6,25 +6,22 @@
 #define EGLE_NODE_H
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 namespace eGLE
 {
     class Node {
     public:
-        glm::vec3 &position() const;
-        glm::vec3 &scale() const;
-        glm::vec3 &rotation() const;
-
-        void setPosition(glm::vec3 &position);
-        void setScale(glm::vec3 &scale);
-        void setRotation(glm::vec3 &rotation);
+        glm::vec3 &position();
+        glm::vec3 &scale();
+        glm::quat &rotation();
 
     private:
         /* Pos / Rot / Scale
          * MVP inverted is Projection * View * Model */
         glm::vec3 m_position;
         glm::vec3 m_scale;
-        glm::vec3 m_rotation; // Euler Angles
+        glm::quat m_rotation;
     };
 }
 
