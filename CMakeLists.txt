@@ -5,10 +5,12 @@ set(CMAKE_CXX_STANDARD 14)
 
 find_package(OpenGL REQUIRED)
 
-include_directories(/usr/local/include)
-link_directories(/usr/local/lib)
+#include_directories(/usr/local/include)
+#link_directories(/usr/local/lib)
 
-message(STATUS ${glfw3_INCLUDE_DIR})
+message(STATUS ${CMAKE_SHARED_LIBRARY_PREFX}${PROJECT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX})
+message(STATUS ${CMAKE_CURRENT_BINARY_DIR})
+message(STATUS ${PROJECT_SOURCE_DIR})
 
 file(GLOB INCLUDE_FILES
         "include/Bites/*.h"
@@ -33,10 +35,21 @@ target_link_libraries(eGLE
         ${glfw3_LIBRARY}
         )
 
-# Copy lib to directory
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build
-        DESTINATION ${PROJECT_SOURCE_DIR})
+message(STATUS Installing: ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_SHARED_LIBRARY_PREFX}
+        ${PROJECT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX})
 
-# Copy headers
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
-        DESTINATION ${PROJECT_SOURCE_DIR}/build/include/eGLE/)
+# Copy lib to directory
+file(COPY ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}${PROJECT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}
+     DESTINATION ${PROJECT_SOURCE_DIR}/build)
+
+# Copy headers to directory
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/include
+        DESTINATION ${PROJECT_SOURCE_DIR}/build)
+
+# Install
+#install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+#        DESTINATION ${PROJECT_SOURCE_DIR}/build
+#        FILES_MATCHING PATTERN ${CMAKE_SHARED_LIBRARY_PREFX}${PROJECT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX})
+
+#install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+#        DESTINATION ${PROJECT_SOURCE_DIR}/include/eGLE/)
