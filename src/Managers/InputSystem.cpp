@@ -2,7 +2,7 @@
 // Created by erhoof on 12.01.2021.
 //
 
-#include "../../include/Core/InputSystem.h"
+#include "../../include/Managers/InputSystem.h"
 #include "../../include/Core/Window.h"
 #include <GLFW/glfw3.h>
 

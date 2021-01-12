@@ -4,7 +4,7 @@
 
 #include "../../include/Components/CameraComponent.h"
 #include "../../include/Core/Window.h"
-#include "../../include/Core/RenderSystem.h"
+#include "../../include/Managers/RenderSystem.h"
 
 #include <GLFW/glfw3.h>
 

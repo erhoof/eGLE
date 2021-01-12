@@ -4,8 +4,8 @@
 
 #include "../../include/Core/Core.h"
 #include "../../include/Core/Debug.h"
-#include "../../include/Core/RenderSystem.h"
-#include "../../include/Core/InputSystem.h"
+#include "../../include/Managers/RenderSystem.h"
+#include "../../include/Managers/InputSystem.h"
 #include "../../include/Core/ApplicationContext.h"
 #include "../../include/Core/Window.h"
 

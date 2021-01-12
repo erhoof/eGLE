@@ -3,7 +3,7 @@
 //
 
 #include "../../include/Core/ApplicationContext.h"
-#include "../../include/Core/RenderSystem.h"
+#include "../../include/Managers/RenderSystem.h"
 
 namespace eGLE
 {
