@@ -51,6 +51,9 @@ namespace eGLE
     {
         for (auto const &component : m_components)
             component->updateRS(rs);
+
+        for (auto const &child : m_childrens)
+            child->updateRS(rs);
     }
 
     Node *Node::parent()
