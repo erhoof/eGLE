@@ -21,6 +21,7 @@ file(GLOB INCLUDE_FILES
         "include/Core/*.h"
         "include/IO/*.h"
         "include/Managers/*.h"
+        "include/Objects/*.h"
         "include/Shaders/*.h"
         )
 
@@ -30,6 +31,7 @@ file(GLOB SRC_FILES
         "src/Core/*.cpp"
         "src/IO/*.cpp"
         "src/Managers/*.cpp"
+        "src/Objects/*.cpp"
         "src/Shaders/*.cpp"
         )
 
