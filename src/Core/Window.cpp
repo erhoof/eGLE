@@ -14,7 +14,7 @@ namespace eGLE
 {
     Window *Window::m_instance = nullptr;
 
-    Window *Window::window() {
+    Window *Window::instance() {
         if (!m_instance)
             m_instance = new Window();
 

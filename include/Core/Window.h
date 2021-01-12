@@ -11,7 +11,7 @@ namespace eGLE
 {
     class Window {
     public:
-        static Window *window();
+        static Window *instance();
 
         void init(int width, int height, const char *title);
         bool shouldClose(); // get if window should close
