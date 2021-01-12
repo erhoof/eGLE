@@ -14,7 +14,7 @@ namespace eGLE
 
     void ApplicationContext::render(RenderSystem *rs)
     {
-        rs->render(rs);
+        rs->render(m_rootNode);
     }
 
     void ApplicationContext::update(float timeDelta)
@@ -29,7 +29,7 @@ namespace eGLE
 
     Node &ApplicationContext::rootNode()
     {
-        return m_rootNode;
+        return *m_rootNode;
     }
 
     void ApplicationContext::addToScene(Node *child)
