@@ -22,7 +22,7 @@ namespace eGLE
         {
             std::cout << "[eGLE] msgs: " << std::forward<Arg>(arg);
             using expander = int[];
-            (void)expander{0, (void(std::cout << "," << std::forward<Args>(args)), 0)...};
+            (void)expander{0, (void(std::cout << " " << std::forward<Args>(args)), 0)...};
             std::cout << std::endl;
         }
     };
