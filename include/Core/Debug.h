@@ -14,7 +14,7 @@ namespace eGLE
         static void halt(const char *line)
         {
             std::cout << "[eGLE] Halt! msg: " << line << std::endl;
-            exit(2);
+            exit(1);
         }
 
         template <typename Arg, typename... Args>
