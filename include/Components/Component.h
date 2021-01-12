@@ -26,7 +26,7 @@ namespace eGLE
         // Getters / Setters
         Node *parent();
         void setParent(Node *parent);
-        Transform &getTransform();
+        Transform &transform();
 
     private:
         Node *m_parent;

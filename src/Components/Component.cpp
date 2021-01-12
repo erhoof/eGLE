@@ -17,7 +17,7 @@ namespace eGLE
         m_parent = parent;
     }
 
-    Transform &Component::getTransform()
+    Transform &Component::transform()
     {
         return m_parent->transform();
     }
