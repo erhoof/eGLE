@@ -27,7 +27,7 @@ namespace eGLE
             m_oldScale = m_scale;
 
             if (m_parent)
-                m_parentMatrix = m_parent->getWorldMatrix();
+                m_parentMatrix = m_parent->worldMatrix();
         }
     }
 
@@ -56,7 +56,7 @@ namespace eGLE
         glm::quat tempQ = glm::conjugate(rotation);
         glm::quat tempW = rotation * glm::quat(0, axis) * tempQ;
 
-        return glm::normalize(glm::vec3(w[0], w[1], w[2]));
+        return glm::normalize(glm::vec3(tempW[0], tempW[1], tempW[2]));
     }
 
     glm::vec3 Transform::sideTop()
@@ -163,7 +163,7 @@ namespace eGLE
         for (unsigned int i = 0; i < 4; i++)
             for (unsigned int j = 0; j < 4; j++)
                 if (i == 3 && j != 3)
-                    tempMatrix[i][j] = value[j];
+                    matrix[i][j] = value[j];
 
         return matrix;
     }
@@ -179,14 +179,14 @@ namespace eGLE
         return glm::quat(w, x, y, z);
     }
 
-    glm::mat4 Transform::scale(const glm::vec &value) const
+    glm::mat4 Transform::scale(const glm::vec3 &value) const
     {
         glm::mat4 matrix;
 
         for (unsigned int i = 0; i < 3; i++)
             for (unsigned int j = 0; j < 3; j++)
                 if (i == j && i != 3)
-                    mmatrix[i][j] = value[i];
+                    matrix[i][j] = value[i];
 
         return matrix;
     }

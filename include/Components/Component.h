@@ -5,6 +5,8 @@
 #ifndef EGLE_COMPONENT_H
 #define EGLE_COMPONENT_H
 
+#include "../Bites/Transform.h"
+
 namespace eGLE
 {
     class RenderSystem;
@@ -12,7 +14,6 @@ namespace eGLE
 
     class Component {
     public:
-        virtual Component() = default;
         virtual ~Component() = default;
 
         virtual void render(RenderSystem *rs) {};

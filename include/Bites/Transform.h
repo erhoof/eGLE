@@ -6,6 +6,7 @@
 #define EGLE_TRANSFORM_H
 
 #include <glm/glm.hpp>
+#include <glm/gtx/quaternion.hpp>
 
 namespace eGLE
 {
@@ -65,7 +66,7 @@ namespace eGLE
 
         glm::mat4 translate(const glm::vec3& value) const;
         glm::quat multiplicate(glm::quat q, glm::vec3 v);
-        glm::mat4 scale(const glm::vec& value) const;
+        glm::mat4 scale(const glm::vec3& value) const;
     };
 
     // Add-in functions

@@ -4,11 +4,16 @@
 
 #include "../../include/Core/Window.h"
 #include "../../include/Core/Debug.h"
+
+#define GLFW_INCLUDE_NONE
+
 #include <GLFW/glfw3.h>
 #include <glad.h>
 
 namespace eGLE
 {
+    Window *Window::m_instance = nullptr;
+
     Window *Window::window() {
         if (!m_instance)
             m_instance = new Window();
