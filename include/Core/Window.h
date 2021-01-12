@@ -17,6 +17,7 @@ namespace eGLE
         bool shouldClose(); // get if window should close
 
         // Rendering
+        void render();
         void clear();
         void destroy();
 

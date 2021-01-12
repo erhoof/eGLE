@@ -99,6 +99,10 @@ namespace eGLE
         return m_glfwWindow;
     }
 
+    void Window::render()
+    {
+        glfwSwapBuffers(m_glfwWindow);
+    }
 
     // Callbacks
     void resize(GLFWwindow *window, int width, int height)
