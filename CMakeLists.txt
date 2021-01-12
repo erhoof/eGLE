@@ -3,10 +3,8 @@ project(eGLE)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(OpenGL REQUIRED)
 find_package(glad CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
-find_package(glad CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 
 #include_directories(/usr/local/include)
@@ -19,6 +17,7 @@ message(STATUS ${PROJECT_SOURCE_DIR})
 
 file(GLOB INCLUDE_FILES
         "include/Bites/*.h"
+        "include/Components/*.h"
         "include/Core/*.h"
         "include/IO/*.h"
         "include/Managers/*.h"
@@ -26,6 +25,7 @@ file(GLOB INCLUDE_FILES
 
 file(GLOB SRC_FILES
         "src/Bites/*.cpp"
+        "src/Components/*.cpp"
         "src/Core/*.cpp"
         "src/IO/*.cpp"
         "src/Managers/*.cpp"
@@ -34,11 +34,9 @@ file(GLOB SRC_FILES
 add_library(eGLE SHARED ${SRC_FILES})
 
 target_link_libraries(eGLE
-        ${OPENGL_LIBRARIES}
+        glad::glad
         glm
-        glad::glad
         glfw
-        glad::glad
         )
 
 message(STATUS Installing: ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_SHARED_LIBRARY_PREFX}
