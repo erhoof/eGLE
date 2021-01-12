@@ -8,7 +8,7 @@
 namespace eGLE
 {
     class Node;
-    class Camera;
+    class CameraComponent;
 
     class RenderSystem {
     public:
@@ -20,11 +20,11 @@ namespace eGLE
 
         // Camera System
         // TODO: check with inline
-        Camera *mainCamera();
-        void setMainCamera(Camera *camera);
+        CameraComponent *mainCamera();
+        void setMainCamera(CameraComponent *camera);
 
     private:
-        Camera *m_mainCamera;
+        CameraComponent *m_mainCamera;
     };
 }
 

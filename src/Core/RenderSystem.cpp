@@ -31,12 +31,12 @@ namespace eGLE
         root->render(this);
     }
 
-    Camera *RenderSystem::mainCamera()
+    CameraComponent *RenderSystem::mainCamera()
     {
         return m_mainCamera;
     }
 
-    void RenderSystem::setMainCamera(Camera *camera)
+    void RenderSystem::setMainCamera(CameraComponent *camera)
     {
         m_mainCamera = camera;
     }
