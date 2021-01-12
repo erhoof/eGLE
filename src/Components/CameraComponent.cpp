@@ -38,14 +38,14 @@ namespace eGLE
         glm::vec3 lookAt = transform().position() + transform().sideFront(); // to look forward
         glm::vec3 top = transform().sideTop(); // top side
 
-        m_viewMatrix = glm::lookAt(position, target, top);
+        m_viewMatrix = glm::lookAt(position, lookAt, top);
 
         return m_viewMatrix;
     }
 
     glm::mat4 CameraComponent::projectionMatrix()
     {
-        return m_projectionMatrix();
+        return m_projectionMatrix;
     }
 
     glm::mat4 CameraComponent::viewProjectionMatrix()
