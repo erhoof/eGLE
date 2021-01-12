@@ -13,7 +13,7 @@ namespace eGLE
     public:
         static Window *instance();
 
-        void init(int width, int height, const char *title);
+        void prepare(int width, int height, const char *title);
         bool shouldClose(); // get if window should close
 
         // Rendering
