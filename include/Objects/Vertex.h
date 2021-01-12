@@ -11,7 +11,7 @@ namespace eGLE
 {
     struct Vertex {
         glm::vec3 m_position;
-        glm::vec3 m_textureCoord;
+        glm::vec2 m_textureCoord;
         glm::vec3 m_normal;
 
         Vertex(glm::vec3 position = glm::vec3(0, 0, 0),
