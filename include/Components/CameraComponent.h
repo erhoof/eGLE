@@ -13,7 +13,7 @@ namespace eGLE
 {
     class RenderSystem;
 
-    class CameraComponent : Component {
+    class CameraComponent : public Component {
     public:
         CameraComponent(float FOV, float aspectRatio, float zNear, float zFar);
         ~CameraComponent() = default;
