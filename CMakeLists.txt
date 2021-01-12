@@ -31,6 +31,13 @@ file(GLOB SRC_FILES
         "src/Managers/*.cpp"
         )
 
+# Microsoft Stuff
+add_definitions(-DBUILD_DLL)
+if(MSVC)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+    set(BUILD_SHARED_LIBS TRUE)
+endif()
+
 add_library(eGLE SHARED ${SRC_FILES})
 
 target_link_libraries(eGLE
@@ -56,7 +63,14 @@ message(STATUS Installing: ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_SHARED_LIBRARY_PR
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_SHARED_LIBRARY_PREFX}${PROJECT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}
         DESTINATION ${PROJECT_SOURCE_DIR}/build)
 
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_SHARED_LIBRARY_PREFX}${PROJECT_NAME}.lib
+        DESTINATION ${PROJECT_SOURCE_DIR}/build)
+
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
         DESTINATION ${PROJECT_SOURCE_DIR}/build/include/eGLE/)
+
+# copy lib to project after
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_SHARED_LIBRARY_PREFX}${PROJECT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}
+        DESTINATION C:/Users/erhoof/Developer/CLionProjects/eGame/cmake-build-debug)
 
 #thx to danielunderwood, hazel, vkramer
