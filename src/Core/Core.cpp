@@ -16,10 +16,10 @@ namespace eGLE
 {
     int Core::m_frameRate = 0;
 
-    Core::Core(ApplicationContext *ac, RenderSystem *rs, Window *w, double frameRate) :
+    Core::Core(ApplicationContext *ac, RenderSystem *rs, double frameRate) :
         m_applicationContext(ac),
         m_renderSystem(rs),
-        m_window(w),
+        m_window(Window::instance()),
         m_frameTime(1.0f / frameRate),
         m_isRunning(false)
     {
@@ -50,6 +50,8 @@ namespace eGLE
         double frameCount = 0;
         int framesRendered = 0;
 
+        Debug::msg("[Core] Entering main loop...");
+
         // Main Loop
         while(m_isRunning) {
             bool render = false;
@@ -59,12 +61,16 @@ namespace eGLE
             double elapsedTime = startTime - previousTime;
             previousTime = startTime;
 
+            unprocessedTime += elapsedTime;
+            frameCount += elapsedTime;
+
             // FPS Counter
             if (frameCount >= 1.0) {
                 m_frameRate = framesRendered;
                 framesRendered = 0;
                 frameCount = 0;
 
+                Debug::msg("FPS: ", m_frameRate);
                 // TODO: out FPS count
             }
 
@@ -86,7 +92,7 @@ namespace eGLE
             if (render) {
                 this->render(m_renderSystem);
 
-                frameCount++;
+                framesRendered++;
             } else {
                 // wait for Sync with eventSystem
                 std::this_thread::sleep_for(std::chrono::milliseconds(10));

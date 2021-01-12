@@ -13,7 +13,7 @@ namespace eGLE
 
     class Core {
     public:
-        Core(ApplicationContext *ac, RenderSystem *rs, Window *w, double frameRate);
+        Core(ApplicationContext *ac, RenderSystem *rs, double frameRate);
         ~Core() = default;
 
         void run();
