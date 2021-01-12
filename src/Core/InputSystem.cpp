@@ -16,9 +16,6 @@ namespace eGLE
         m_isCursorLocked(false),
         m_scrollOffset(0.0f),
         m_glfwWindow(Window::instance()->glfwWindow())
-    {}
-
-    void InputSystem::prepare(GLFWwindow *glfwWindow)
     {
         // Setup callbacks
         glfwSetKeyCallback(glfwWindow, keyCallback);
