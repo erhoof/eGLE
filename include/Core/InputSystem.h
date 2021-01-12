@@ -17,6 +17,7 @@ namespace eGLE
         static InputSystem *instance();
 
         // Core
+        static void prepare(GLFWwindow *glfwWindow);
         static void pollEvents();
 
         // -- Getters / Setters --
