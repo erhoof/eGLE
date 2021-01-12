@@ -18,10 +18,10 @@ namespace eGLE
         m_glfwWindow(Window::instance()->glfwWindow())
     {
         // Setup callbacks
-        glfwSetKeyCallback(glfwWindow, keyCallback);
-        glfwSetMouseButtonCallback(glfwWindow, mouseCallback);
-        glfwSetCursorPosCallback(glfwWindow, cursorCallback);
-        glfwSetScrollCallback(glfwWindow, scrollCallback);
+        glfwSetKeyCallback(m_glfwWindow, keyCallback);
+        glfwSetMouseButtonCallback(m_glfwWindow, mouseCallback);
+        glfwSetCursorPosCallback(m_glfwWindow, cursorCallback);
+        glfwSetScrollCallback(m_glfwWindow, scrollCallback);
     }
 
     InputSystem *InputSystem::instance()
