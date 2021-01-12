@@ -21,7 +21,7 @@ namespace eGLE
         return m_instance;
     }
 
-    void Window::init(int width, int height, const char *title)
+    void Window::prepare(int width, int height, const char *title)
     {
         m_width = width;
         m_height = height;
