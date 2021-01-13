@@ -7,6 +7,8 @@ find_package(glad CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 
+find_path(STB_INCLUDE_DIRS "stb.h")
+
 #include_directories(/usr/local/include)
 #link_directories(/usr/local/lib)
 
