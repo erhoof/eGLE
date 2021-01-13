@@ -19,7 +19,7 @@ namespace eGLE
         // Getters / Setters
         Mesh *mesh();
         void setMesh(Mesh *mesh);
-        Material *material()
+        Material *material();
         void setMaterial(Material *material);
 
     private:
