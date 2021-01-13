@@ -20,6 +20,7 @@ namespace eGLE
 
         // RUI
         void input(float timeDelta);
+        void processMouseMovement(float xOffset, float yOffset);
 
         // RS
         void updateRS(RenderSystem *rs);
@@ -38,15 +39,23 @@ namespace eGLE
         glm::vec3 m_position;
         glm::vec3 m_front;
         glm::vec3 m_up;
+        glm::vec3 m_right;
+        glm::vec3 m_worldUp;
         glm::vec2 m_center;
 
         // TODO: Camera Rotation (yaw, pitch, roll)
+        float m_yaw = -90.0f;
+        float m_pitch = 0.0f;
+        float m_sensitivity = 0.1f;
 
         // Add-in Properties (sens: 0.005f)
         float m_FOV;
         float m_aspectRatio;
         float m_zNear;
         float m_zFar;
+
+        // Add-ins
+        void updateCamera();
     };
 }
 
