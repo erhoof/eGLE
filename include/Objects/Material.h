@@ -9,6 +9,8 @@
 
 namespace eGLE
 {
+    class Texture;
+
     class Material {
     public:
         Material() = default;
