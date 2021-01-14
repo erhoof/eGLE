@@ -15,10 +15,14 @@ namespace eGLE
     public:
         Mesh();
         Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
-        ~Mesh();
+        virtual ~Mesh() {};
 
         // RUI
-        void draw() const;
+        virtual void generate() {};
+        virtual void render() const {};
+
+        // Edit
+        void setColor(glm::vec3 color);
 
     private:
         // Vertex Array Objects (designed to store the information for a complete rendered object)
@@ -35,8 +39,6 @@ namespace eGLE
 
         std::vector<Vertex> m_vertices;
         std::vector<unsigned int> m_indices;
-
-        void generate(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
     };
 }
 
