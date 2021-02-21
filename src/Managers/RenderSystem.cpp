@@ -29,6 +29,8 @@ namespace eGLE
 
         // Render Scene Graph
         root->render(this);
+
+        m_pointLights.clear();
     }
 
     CameraComponent *RenderSystem::mainCamera()
@@ -39,5 +41,15 @@ namespace eGLE
     void RenderSystem::setMainCamera(CameraComponent *camera)
     {
         m_mainCamera = camera;
+    }
+
+    void RenderSystem::addPointLight(Node *node)
+    {
+        m_pointLights.push_back(node);
+    }
+
+    std::vector<Node *> &RenderSystem::pointLights()
+    {
+        return m_pointLights;
     }
 }

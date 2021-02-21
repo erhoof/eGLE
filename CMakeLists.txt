@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 find_package(glad CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
+find_package(assimp CONFIG REQUIRED)
 
 find_path(STB_INCLUDE_DIRS "stb.h")
 
@@ -50,6 +51,7 @@ target_link_libraries(eGLE
         glad::glad
         glm
         glfw
+        assimp::assimp
         )
 
 message(STATUS Installing: ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_SHARED_LIBRARY_PREFX}

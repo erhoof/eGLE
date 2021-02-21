@@ -27,6 +27,10 @@ namespace eGLE
             m_indices(std::move(indices))
     {}
 
+    Mesh3D::Mesh3D(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture *> textures) :
+        Mesh(vertices, indices, textures)
+    {}
+
     Mesh3D::~Mesh3D()
     {
         if (m_VBO) glDeleteBuffers(1, &m_VBO); // Specifies the number of buffer objects to be deleted, buffer
@@ -43,7 +47,7 @@ namespace eGLE
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
         glEnableVertexAttribArray(2);
-        glEnableVertexAttribArray(3);
+        //glEnableVertexAttribArray(3);
 
         // Draw by Triangles
         // type of primitive, number of elements to render, type of in indices, indices pointer
@@ -53,7 +57,7 @@ namespace eGLE
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glDisableVertexAttribArray(2);
-        glDisableVertexAttribArray(3);
+        //glDisableVertexAttribArray(3);
 
         // Free VAO
         glBindVertexArray(0);
@@ -87,6 +91,6 @@ namespace eGLE
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)nullptr);
         glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_textureCoord));
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_normal));
-        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_color));
+        //glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_color));
     }
 }

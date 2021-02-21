@@ -75,4 +75,17 @@ namespace eGLE
     {
         return m_childrens;
     }
+
+    void Node::moveWithDelta(glm::vec3 delta)
+    {
+        for (auto const &item : m_childrens) {
+            item->transform().position().x += delta.x;
+            item->transform().position().y += delta.y;
+            item->transform().position().z += delta.z;
+        }
+
+        this->transform().position().x += delta.x;
+        this->transform().position().y += delta.y;
+        this->transform().position().z += delta.z;
+    }
 }

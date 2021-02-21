@@ -11,10 +11,13 @@
 
 namespace eGLE
 {
+    class Texture;
+
     class Mesh3D : public Mesh {
     public:
         Mesh3D();
         Mesh3D(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
+        Mesh3D(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture *> textures);
         ~Mesh3D();
 
         // RUI

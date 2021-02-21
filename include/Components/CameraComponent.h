@@ -29,6 +29,7 @@ namespace eGLE
         glm::mat4 viewMatrix();
         glm::mat4 projectionMatrix();
         glm::mat4 viewProjectionMatrix();
+        glm::vec3 front() const;
 
     private:
         // MVP

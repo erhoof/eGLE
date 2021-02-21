@@ -117,22 +117,32 @@ namespace eGLE
 
     void Shader::setUniform(const char *name, int value)
     {
-        glUniform1i(m_uniforms.at(std::string(name)), value);
+        //glUniform1i(m_uniforms.at(std::string(name)), value);
+        glUniform1i(glGetUniformLocation(m_programID, name), value);
     }
 
     void Shader::setUniform(const char *name, float value)
     {
-        glUniform1f(m_uniforms.at(std::string(name)), value);
+        //glUniform1f(m_uniforms.at(std::string(name)), value);
+        glUniform1f(glGetUniformLocation(m_programID, name), value);
+    }
+
+    void Shader::setUniform(const char *name, unsigned int value)
+    {
+        //glUniform1ui(glGetUniformLocation(m_programID, name), value);
+        glUniform1i(glGetUniformLocation(m_programID, name), value);
     }
 
     void Shader::setUniform(const char *name, const glm::vec3 &value)
     {
-        glUniform3f(m_uniforms.at(std::string(name)), value.x, value.y, value.z);
+        //glUniform3f(m_uniforms.at(std::string(name)), value.x, value.y, value.z);
+        glUniform3f(glGetUniformLocation(m_programID, name), value.x, value.y, value.z);
     }
 
     void Shader::setUniform(const char *name, const glm::mat4 &value)
     {
         // location, count, transpose, value
-        glUniformMatrix4fv(m_uniforms.at(std::string(name)), 1, GL_FALSE, &(value[0][0]));
+        //glUniformMatrix4fv(m_uniforms.at(std::string(name)), 1, GL_FALSE, &(value[0][0]));
+        glUniformMatrix4fv(glGetUniformLocation(m_programID, name), 1, GL_FALSE, &(value[0][0]));
     }
 }

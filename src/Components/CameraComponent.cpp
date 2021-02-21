@@ -81,6 +81,11 @@ namespace eGLE
         return m_projectionMatrix * viewMatrix();
     }
 
+    glm::vec3 CameraComponent::front() const
+    {
+        return m_front;
+    }
+
     void CameraComponent::updateCamera()
     {
         glm::vec3 front;

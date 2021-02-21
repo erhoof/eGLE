@@ -11,17 +11,20 @@
 
 namespace eGLE
 {
+    class Texture;
+
     class Mesh {
     public:
         Mesh();
         Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
+        Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture *> textures);
         virtual ~Mesh() {};
 
         // RUI
         virtual void generate() {};
         virtual void render() const {};
 
-        // Edit
+        // Getters / Setters
         void setColor(glm::vec3 color);
 
     private:
@@ -39,6 +42,9 @@ namespace eGLE
 
         std::vector<Vertex> m_vertices;
         std::vector<unsigned int> m_indices;
+        std::vector<Texture *> m_textures;
+
+        bool m_exMesh = false;
     };
 }
 

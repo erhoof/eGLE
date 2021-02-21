@@ -13,6 +13,16 @@ namespace eGLE
 {
     const Texture *Texture::m_lastEnabled = nullptr;
 
+    Texture::Texture(const char *filename, const char *directory)
+    {
+        std::string line;
+        line += directory;
+        line += "/";
+        line += filename;
+
+        loadTexture(line.c_str());
+    }
+
     Texture::Texture(const char *filename)
     {
         // Flip image fix (OGL representation)
@@ -88,5 +98,79 @@ namespace eGLE
     int Texture::textureID() const
     {
         return m_textureID;
+    }
+
+    std::string Texture::type() const
+    {
+        return m_type;
+    }
+
+    void Texture::setType(std::string type)
+    {
+        m_type = type;
+    }
+
+    void Texture::loadTexture(const char *filepath)
+    {
+        // Flip image fix (OGL representation)
+        stbi_set_flip_vertically_on_load(true);
+
+        // Load and verify data (file, w, h, n (8-bit components per pixel), (components per pixel in file)
+        m_data = stbi_load(filepath, &m_width, &m_height, &m_channels, 0);
+
+        // If loaded
+        if (m_data) {
+            // ogl to gen texture name
+            glGenTextures(1, &m_textureID);
+
+            // bind to texturing target
+            glBindTexture(GL_TEXTURE_2D, m_textureID);
+
+            // define format
+            GLenum type;
+            switch (m_channels) {
+                case 1:
+                    type = GL_RED;
+                    break;
+                case 3:
+                    type = GL_RGB;
+                    break;
+                case 4:
+                    type = GL_RGBA;
+                    break;
+                default:
+                    break;
+            }
+
+            // specify image: target, level (mipmap), internalFormat, width,
+            // height, border (must be 0), format, type, data
+            glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+            glTexImage2D(GL_TEXTURE_2D, 0, type, m_width, m_height, 0, type, GL_UNSIGNED_BYTE, m_data);
+
+            // Setup linear filtering (https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml)
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+            // Prepare mipmap (optimised seq of images)
+            glGenerateMipmap(GL_TEXTURE_2D);
+
+            stbi_image_free(m_data);
+
+            Debug::msg("[Texture] Loaded texture from ", filepath, " - ID: ", m_textureID);
+        } else {
+            Debug::msg("[Texture] Error loading texture ", filepath, " - msg: ", stbi_failure_reason());
+        }
+    }
+
+    std::string Texture::path() const
+    {
+        return m_path;
+    }
+
+    void Texture::setPath(std::string path)
+    {
+        m_path = path;
     }
 }

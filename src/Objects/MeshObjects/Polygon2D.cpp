@@ -72,5 +72,12 @@ namespace eGLE
             m_indices.push_back(i);
             m_indices.push_back(i+1);
         }
+
+        if (m_count == 4) {
+            m_vertices[2].m_textureCoord = glm::vec2(1.0f, 1.0f);
+            m_vertices[3].m_textureCoord = glm::vec2(0.0f, 1.0f);
+            m_vertices[1].m_textureCoord = glm::vec2(0.0f, 0.0f);
+            m_vertices[0].m_textureCoord = glm::vec2(1.0f, 0.0f);
+        }
     }
 }

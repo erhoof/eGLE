@@ -39,7 +39,9 @@ namespace eGLE
         Transform &transform();
         std::vector<Node *> childrens();
 
-    private:
+        void moveWithDelta(glm::vec3 delta);
+
+    protected:
         Node *m_parent;
         std::vector<Node *> m_childrens;
         std::vector<Component *> m_components;

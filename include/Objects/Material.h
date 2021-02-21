@@ -10,12 +10,14 @@
 namespace eGLE
 {
     class Texture;
+    class Mesh;
+    class Shader;
 
     class Material {
     public:
-        Material() = default;
-        Material(glm::vec3 color);
-        Material(Texture *diffuseMap);
+        Material();
+        explicit Material(glm::vec3 color);
+        Material(Texture *diffuseMap, Texture *normalMap);
         ~Material() = default;
 
         // -- Getters / Setters --
@@ -29,10 +31,12 @@ namespace eGLE
         Texture *normalMap() const;
         void setDiffuseMap(Texture *diffuseMap);
         void setNormalMap(Texture *normalMap);
+        void prepareTexture() const;
+        void prepareTextureEx(Mesh *mesh, Shader *shader) const;
 
     private:
         // Color
-        glm::vec3 m_color;
+        glm::vec3 m_color{};
 
         // Texture Maps
         Texture *m_diffuseMap;

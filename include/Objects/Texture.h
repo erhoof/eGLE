@@ -13,6 +13,7 @@ namespace eGLE
     public:
         Texture() = default;
         Texture(const char *filename);
+        Texture(const char *filename, const char *directory);
         ~Texture();
 
         // Use flags
@@ -20,6 +21,10 @@ namespace eGLE
         void disable() const;
 
         int textureID() const;
+        std::string type() const;
+        void setType(std::string type);
+        std::string path() const;
+        void setPath(std::string path);
 
     private:
         unsigned int m_textureID;
@@ -29,11 +34,14 @@ namespace eGLE
         int m_width;
         int m_height;
         int m_channels;
-
+        std::string m_type;
+        std::string m_path;
         // Type
         GLenum m_textureTarget;
 
         static const Texture *m_lastEnabled;
+
+        void loadTexture(const char *filepath);
     };
 }
 

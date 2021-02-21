@@ -5,6 +5,8 @@
 #ifndef EGLE_RENDERSYSTEM_H
 #define EGLE_RENDERSYSTEM_H
 
+#include <vector>
+
 namespace eGLE
 {
     class Node;
@@ -23,8 +25,15 @@ namespace eGLE
         CameraComponent *mainCamera();
         void setMainCamera(CameraComponent *camera);
 
+        // Light
+        void addPointLight(Node *node);
+        std::vector<Node *> &pointLights();
+
     private:
         CameraComponent *m_mainCamera;
+
+        // Light
+        std::vector<Node *> m_pointLights;
     };
 }
 

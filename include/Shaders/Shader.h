@@ -44,6 +44,7 @@ namespace eGLE
         void createUniform(const char *name);
         void setUniform(const char *name, int value);
         void setUniform(const char *name, float value);
+        void setUniform(const char *name, unsigned int value);
         void setUniform(const char *name, const glm::vec3& value);
         void setUniform(const char *name, const glm::mat4& value);
 

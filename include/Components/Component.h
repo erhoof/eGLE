@@ -28,7 +28,7 @@ namespace eGLE
         void setParent(Node *parent);
         Transform &transform();
 
-    private:
+    protected:
         Node *m_parent;
     };
 }
